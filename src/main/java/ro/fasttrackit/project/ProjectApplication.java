@@ -1,5 +1,8 @@
 package ro.fasttrackit.project;
 
+//PROJECT:
+//Aplicație gen IMDB (afișare filme cu descriere, afiș, trailer + posibilitate de rating și afișare top-uri).
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -3,6 +3,8 @@ package ro.fasttrackit.project.model.entity;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class Movie {
 	@Id
@@ -11,13 +13,13 @@ public class Movie {
 	private String name;
 	private int year;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = ALL)
 	private Description description;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = ALL)
 	private List<Poster> posters;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = ALL)
 	private List<Trailer> trailers;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = ALL)
 	private List<Rating> ratings;
 
 	public Movie(String name, int year, Description description, List<Poster> posters, List<Trailer> trailers, List<Rating> ratings) {
