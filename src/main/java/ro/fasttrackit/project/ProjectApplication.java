@@ -23,7 +23,7 @@ public class ProjectApplication {
 	CommandLineRunner atStartup(MovieRepository repository) {
 		return args -> {
 			repository.saveAll(List.of(
-					new Movie("Dune", 2021, new Description("Movie plot"),
+					new Movie("Dune", 2021, new Description("Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy."),
 							listOfPosters(),
 							listOfTrailers(),
 							listOfRatings())
@@ -51,4 +51,5 @@ public class ProjectApplication {
 				new Rating("user2", 10),
 				new Rating("user3", 10));
 	}
+
 }
