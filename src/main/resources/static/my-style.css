@@ -4,9 +4,6 @@ body {
 th {
   text-align: center;
 }
-td {
-  text-align: left;
-}
 table, td, th{
     border: 1px solid black;
 }
