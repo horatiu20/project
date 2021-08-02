@@ -24,10 +24,23 @@
             <a class="nav-link" href="#" style="color:orange">Top movies</a>
         </li>
     </ul>
-    <form action="/action_page.php" class="form-inline">
-        <input class="form-control mr-sm-2" placeholder="Search for movie" type="text">
-        <button class="btn btn-primary" type="submit">Go</button>
-    </form>
+    <div class="container mt-3">
+        <input class="form-control" id="myInput" type="text" placeholder="Search movie from DB">
+        <div id="myDIV" class="mt-3">
+<!-- as vrea sa pot cauta dupa numele filmului aici-->
+        </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myDIV *").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+    </script>
 </nav>
 
 <div class="container-fluid">
@@ -58,15 +71,19 @@
         <tr data-th-each="movie: ${movies}" style="text-align: center">
             <td data-th-text="${movie.id}"></td>
             <td data-th-text="${movie.posters}"></td>
+            <!-- as vrea sa poata sa imi arate pozele cu textul dedesubt-->
             <td data-th-text="${movie.name}"></td>
             <td data-th-text="${movie.year}"></td>
             <td data-th-text="${movie.description.description}"></td>
             <td data-th-text="${movie.trailers}"></td>
+            <!-- as vrea sa poata sa imi arate trailerele cu textul dedesubt-->
             <td data-th-text="${movie.ratings}"></td>
+            <!-- as vrea sa imi arate media aici-->
             <td>
                 <i class="fas fa-pen-square" data-target="#movie-modal" data-toggle="modal"></i>
                 <i class="fas fa-trash"></i>
             </td>
+        </tr>
         </tbody>
     </table>
 </div>
