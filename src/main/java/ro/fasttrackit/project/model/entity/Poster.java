@@ -3,6 +3,9 @@ package ro.fasttrackit.project.model.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Poster {
@@ -11,8 +14,12 @@ public class Poster {
 	private Integer id;
 	private String posterDescription;
 
-	public Poster(String posterDescription) {
+	@ManyToOne(cascade = ALL)
+	private Movie movie;
+
+	public Poster(String posterDescription, Movie movie) {
 		this.posterDescription = posterDescription;
+		this.movie = movie;
 	}
 
 	Poster() {
@@ -34,11 +41,20 @@ public class Poster {
 		this.posterDescription = posterDescription;
 	}
 
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
 	@Override
 	public String toString() {
 		return "Poster{" +
 				"id=" + id +
 				", posterDescription='" + posterDescription + '\'' +
+				", movie=" + movie +
 				'}';
 	}
 }

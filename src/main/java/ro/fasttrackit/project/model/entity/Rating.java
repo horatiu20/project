@@ -3,6 +3,9 @@ package ro.fasttrackit.project.model.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Rating {
@@ -12,9 +15,13 @@ public class Rating {
 	private String user;
 	private int movieRating;
 
-	public Rating(String user, int movieRating) {
+	@ManyToOne(cascade = ALL)
+	private Movie movie;
+
+	public Rating(String user, int movieRating, Movie movie) {
 		this.user = user;
 		this.movieRating = movieRating;
+		this.movie = movie;
 	}
 
 	Rating() {
@@ -44,12 +51,21 @@ public class Rating {
 		this.movieRating = movieRating;
 	}
 
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
 	@Override
 	public String toString() {
 		return "Rating{" +
 				"id=" + id +
 				", user='" + user + '\'' +
 				", movieRating=" + movieRating +
+				", movie=" + movie +
 				'}';
 	}
 }

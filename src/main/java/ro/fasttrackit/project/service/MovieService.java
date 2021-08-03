@@ -49,11 +49,7 @@ public class MovieService {
 		Optional<Movie> patchedMovie = movieById
 				.map(oldMovie -> new Movie(
 						movie.getName() != null ? movie.getName() : oldMovie.getName(),
-						movie.getYear() != 0 ? movie.getYear() : oldMovie.getYear(),
-						movie.getDescription() != null ? movie.getDescription() : oldMovie.getDescription(),
-						movie.getPosters() != null ? movie.getPosters() : oldMovie.getPosters(),
-						movie.getTrailers() != null ? movie.getTrailers() : oldMovie.getTrailers(),
-						movie.getRatings() != null ? movie.getRatings() : oldMovie.getRatings()));
+						movie.getYear() != 0 ? movie.getYear() : oldMovie.getYear()));
 		patchedMovie.ifPresent(newMovie -> putMovie(movieId, newMovie));
 		return patchedMovie;
 	}
