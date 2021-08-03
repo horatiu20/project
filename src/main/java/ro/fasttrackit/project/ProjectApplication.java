@@ -23,11 +23,11 @@ public class ProjectApplication {
 	@Bean
 	CommandLineRunner atStartup(MovieRepository movieRepository, PosterRepository posterRepository, TrailerRepository trailerRepository, RatingRepository ratingRepository) {
 		return args -> {
-			Movie movie1 = movieRepository.save(new Movie("Dune", 2021));
-			Movie movie2 = movieRepository.save(new Movie("Foundation", 2021));
-			Movie movie3 = movieRepository.save(new Movie("The Matrix", 1999));
-			Movie movie4 = movieRepository.save(new Movie("The Witcher", 2019));
-			Movie movie5 = movieRepository.save(new Movie("Star Trek: Discovery", 2017));
+			Movie movie1 = movieRepository.save(new Movie("Dune", 2021, "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy."));
+			Movie movie2 = movieRepository.save(new Movie("Foundation", 2021, "A complex saga of humans scattered on planets throughout the galaxy all living under the rule of the Galactic Empire."));
+			Movie movie3 = movieRepository.save(new Movie("The Matrix", 1999, "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence."));
+			Movie movie4 = movieRepository.save(new Movie("The Witcher", 2019, "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts."));
+			Movie movie5 = movieRepository.save(new Movie("Star Trek: Discovery", 2017, "Ten years before Kirk, Spock, and the Enterprise, the USS Discovery discovers new worlds and lifeforms as one Starfleet officer learns to understand all things alien."));
 
 			Poster movie1Poster1 = posterRepository.save(new Poster("official poster", movie1));
 			Poster movie1Poster2 = posterRepository.save(new Poster("first actor", movie1));
