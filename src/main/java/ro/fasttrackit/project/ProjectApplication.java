@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import ro.fasttrackit.project.model.entity.Movie;
 import ro.fasttrackit.project.model.entity.Poster;
+import ro.fasttrackit.project.model.entity.Rating;
 import ro.fasttrackit.project.model.entity.Trailer;
 import ro.fasttrackit.project.repository.MovieRepository;
 import ro.fasttrackit.project.repository.PosterRepository;
@@ -67,6 +68,26 @@ public class ProjectApplication {
 
 			Trailer movie5Trailer1 = trailerRepository.save(new Trailer("sneak-peak trailer", movie5));
 			Trailer movie5Trailer2 = trailerRepository.save(new Trailer("official trailer", movie5));
+
+			Rating movie1Rating1 = ratingRepository.save(new Rating("user1", 10, movie1));
+			Rating movie1Rating2 = ratingRepository.save(new Rating("user2", 8, movie1));
+			Rating movie1Rating3 = ratingRepository.save(new Rating("user3", 7, movie1));
+
+			Rating movie2Rating1 = ratingRepository.save(new Rating("user1", 5, movie2));
+			Rating movie2Rating2 = ratingRepository.save(new Rating("user2", 9, movie2));
+			Rating movie2Rating3 = ratingRepository.save(new Rating("user3", 7, movie2));
+
+			Rating movie3Rating1 = ratingRepository.save(new Rating("user1", 9, movie3));
+			Rating movie3Rating2 = ratingRepository.save(new Rating("user2", 10, movie3));
+			Rating movie3Rating3 = ratingRepository.save(new Rating("user3", 9, movie3));
+
+			Rating movie4Rating1 = ratingRepository.save(new Rating("user1", 6, movie4));
+			Rating movie4Rating2 = ratingRepository.save(new Rating("user2", 8, movie4));
+			Rating movie4Rating3 = ratingRepository.save(new Rating("user3", 9, movie4));
+
+			Rating movie5Rating1 = ratingRepository.save(new Rating("user1", 8, movie5));
+			Rating movie5Rating2 = ratingRepository.save(new Rating("user2", 9, movie5));
+			Rating movie5Rating3 = ratingRepository.save(new Rating("user3", 8, movie5));
 		};
 	}
 }

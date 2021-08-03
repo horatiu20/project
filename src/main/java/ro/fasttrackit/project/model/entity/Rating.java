@@ -13,12 +13,12 @@ public class Rating {
 	@GeneratedValue
 	private Integer id;
 	private String user;
-	private int movieRating;
+	private double movieRating;
 
 	@ManyToOne(cascade = ALL)
 	private Movie movie;
 
-	public Rating(String user, int movieRating, Movie movie) {
+	public Rating(String user, double movieRating, Movie movie) {
 		this.user = user;
 		this.movieRating = movieRating;
 		this.movie = movie;
@@ -43,7 +43,7 @@ public class Rating {
 		this.user = user;
 	}
 
-	public int getMovieRating() {
+	public double getMovieRating() {
 		return movieRating;
 	}
 
