@@ -15,7 +15,7 @@ public class Rating {
 	private String user;
 	private double movieRating;
 
-	@ManyToOne(cascade = ALL)
+	@ManyToOne
 	private Movie movie;
 
 	public Rating(String user, double movieRating, Movie movie) {

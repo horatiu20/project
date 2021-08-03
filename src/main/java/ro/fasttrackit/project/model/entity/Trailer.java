@@ -14,7 +14,7 @@ public class Trailer {
 	private Integer id;
 	private String trailerDescription;
 
-	@ManyToOne(cascade = ALL)
+	@ManyToOne
 	private Movie movie;
 
 	public Trailer(String trailerDescription, Movie movie) {

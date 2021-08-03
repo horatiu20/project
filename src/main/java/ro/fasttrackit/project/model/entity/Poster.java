@@ -14,7 +14,7 @@ public class Poster {
 	private Integer id;
 	private String posterDescription;
 
-	@ManyToOne(cascade = ALL)
+	@ManyToOne
 	private Movie movie;
 
 	public Poster(String posterDescription, Movie movie) {
