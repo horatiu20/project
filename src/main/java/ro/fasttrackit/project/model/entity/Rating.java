@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import static javax.persistence.CascadeType.ALL;
-
 @Entity
 public class Rating {
 	@Id
