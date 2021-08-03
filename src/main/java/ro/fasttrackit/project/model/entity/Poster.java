@@ -10,13 +10,13 @@ public class Poster {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	private String posterDescription;
+	private String url;
 
 	@ManyToOne
 	private Movie movie;
 
-	public Poster(String posterDescription, Movie movie) {
-		this.posterDescription = posterDescription;
+	public Poster(String url, Movie movie) {
+		this.url = url;
 		this.movie = movie;
 	}
 
@@ -31,12 +31,12 @@ public class Poster {
 		this.id = id;
 	}
 
-	public String getPosterDescription() {
-		return posterDescription;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setPosterDescription(String posterDescription) {
-		this.posterDescription = posterDescription;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Movie getMovie() {
@@ -51,7 +51,7 @@ public class Poster {
 	public String toString() {
 		return "Poster{" +
 				"id=" + id +
-				", posterDescription='" + posterDescription + '\'' +
+				", url='" + url + '\'' +
 				", movie=" + movie +
 				'}';
 	}

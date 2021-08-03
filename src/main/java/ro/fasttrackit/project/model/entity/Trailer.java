@@ -10,13 +10,13 @@ public class Trailer {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	private String trailerDescription;
+	private String url;
 
 	@ManyToOne
 	private Movie movie;
 
-	public Trailer(String trailerDescription, Movie movie) {
-		this.trailerDescription = trailerDescription;
+	public Trailer(String url, Movie movie) {
+		this.url = url;
 		this.movie = movie;
 	}
 
@@ -31,12 +31,12 @@ public class Trailer {
 		this.id = id;
 	}
 
-	public String getTrailerDescription() {
-		return trailerDescription;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setTrailerDescription(String trailerDescription) {
-		this.trailerDescription = trailerDescription;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Movie getMovie() {
@@ -51,7 +51,7 @@ public class Trailer {
 	public String toString() {
 		return "Trailer{" +
 				"id=" + id +
-				", trailerDescription='" + trailerDescription + '\'' +
+				", url='" + url + '\'' +
 				", movie=" + movie +
 				'}';
 	}

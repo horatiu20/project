@@ -45,7 +45,7 @@ public class Rating {
 		return movieRating;
 	}
 
-	public void setMovieRating(int movieRating) {
+	public void setMovieRating(double movieRating) {
 		this.movieRating = movieRating;
 	}
 
