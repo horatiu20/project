@@ -1,4 +1,4 @@
-package ro.fasttrackit.project.model.controller;
+package ro.fasttrackit.project.controller;
 
 import org.springframework.web.bind.annotation.*;
 import ro.fasttrackit.project.model.entity.Movie;
