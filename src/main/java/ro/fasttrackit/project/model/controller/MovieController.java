@@ -31,15 +31,15 @@ public class MovieController {
 				.orElse(null);
 	}
 
-	@DeleteMapping("{movieId")
-	Movie deleteMovie(@PathVariable int movieId) {
-		return movieService.deleteMovie(movieId).
-				orElse(null);
-	}
-
 	@PatchMapping("{movieId")
 	Movie patchMovie(@PathVariable int movieId, @RequestBody Movie movie) {
 		return movieService.patchMovie(movieId, movie)
 				.orElse(null);
+	}
+
+	@DeleteMapping("{movieId")
+	Movie deleteMovie(@PathVariable int movieId) {
+		return movieService.deleteMovie(movieId).
+				orElse(null);
 	}
 }
