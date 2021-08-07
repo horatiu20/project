@@ -7,7 +7,7 @@ import ro.fasttrackit.project.service.MovieService;
 import java.util.List;
 
 @RestController
-@RequestMapping("moviedatabase")
+@RequestMapping("api/movies")
 public class MovieController {
 	private final MovieService movieService;
 
@@ -25,19 +25,18 @@ public class MovieController {
 		return movieService.postMovie(movie);
 	}
 
-	@PutMapping("{movieId")
+	@PutMapping("{movieId}")
 	Movie putMovie(@PathVariable int movieId, @RequestBody Movie newMovie) {
 		return movieService.putMovie(movieId, newMovie)
-				.orElse(null);
+				.orElseThrow(() -> new RuntimeException("Could not find movie with id " + movieId));
 	}
 
-	@PatchMapping("{movieId")
-	Movie patchMovie(@PathVariable int movieId, @RequestBody Movie movie) {
-		return movieService.patchMovie(movieId, movie)
-				.orElse(null);
+	@PatchMapping()
+	Movie patchMovie(@RequestBody Movie dbMovie, @RequestBody Movie movie) {
+		return movieService.patchMovie(dbMovie, movie);
 	}
 
-	@DeleteMapping("{movieId")
+	@DeleteMapping("{movieId}")
 	Movie deleteMovie(@PathVariable int movieId) {
 		return movieService.deleteMovie(movieId).
 				orElse(null);

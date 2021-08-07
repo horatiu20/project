@@ -19,39 +19,31 @@ public class MovieService {
 		return repository.findAll();
 	}
 
-	public Optional<Movie> getById(int movieId) {
-		return this.repository.findAll().stream()
-				.filter(movie -> movie.getId() == movieId)
-				.findFirst();
-	}
-
-	public Movie postMovie(Movie movie) {
-		movie.setId(null);
-		return repository.save(movie);
+	public Movie postMovie(Movie newMovie) {
+		newMovie.setId(null);
+		return repository.save(newMovie);
 	}
 
 	public Optional<Movie> putMovie(int movieId, Movie newMovie) {
-		Optional<Movie> replacedMovie = deleteMovie(movieId);
-		replacedMovie
-				.ifPresent(deleteMovie -> postMovie(newMovie));
-		return replacedMovie;
+		return repository.findById(movieId)
+				.map(dbMovie -> patchMovie(dbMovie, newMovie))
+				.map(repository::save);
 	}
 
 	public Optional<Movie> deleteMovie(int movieId) {
-		Optional<Movie> movieOptional = getById(movieId);
-		movieOptional
-				.ifPresent(repository::delete);
-		return movieOptional;
+		Optional<Movie> movie = repository.findById(movieId);
+		movie.ifPresent(repository::delete);
+		return movie;
 	}
 
-	public Optional<Movie> patchMovie(int movieId, Movie movie) {
-		Optional<Movie> movieById = getById(movieId);
-		Optional<Movie> patchedMovie = movieById
-				.map(oldMovie -> new Movie(
-						movie.getName() != null ? movie.getName() : oldMovie.getName(),
-						movie.getYear() != 0 ? movie.getYear() : oldMovie.getYear(),
-						movie.getDescription() != null ? movie.getDescription() : oldMovie.getDescription()));
-		patchedMovie.ifPresent(newMovie -> putMovie(movieId, newMovie));
-		return patchedMovie;
+	public Movie patchMovie(Movie dbMovie, Movie movie) {
+		dbMovie.setName(movie.getName());
+		dbMovie.setYear(movie.getYear());
+		dbMovie.setDescription(movie.getDescription());
+		return dbMovie;
+	}
+
+	public Optional<Movie> getMovie(int movieId) {
+		return repository.findById(movieId);
 	}
 }

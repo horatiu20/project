@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+    <script src="/movies.js"></script>
 </head>
 <title>Movie DataBase</title>
 <body>
@@ -30,24 +31,25 @@
             <!-- as vrea sa pot cauta dupa numele filmului aici-->
         </div>
     </div>
-    <script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myDIV *").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-
-    </script>
+<!--    <script>-->
+<!--    $(document).ready(function(){-->
+<!--      $("#myInput").on("keyup", function() {-->
+<!--        var value = $(this).val().toLowerCase();-->
+<!--        $("#myDIV *").filter(function() {-->
+<!--          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
+<!--        });-->
+<!--      });-->
+<!--    });-->
+<!--    </script>-->
 </nav>
 
 <div class="container-fluid">
     <br>
     <h2 style="color:#484848" align="center">Movie DataBase</h2>
     <br>
-    <button class="btn btn-primary mb-3" data-target="#movie-modal" data-toggle="modal" type="button">Add Movie</button>
+    <button class="btn btn-primary mb-3" data-target="#movie-modal" data-toggle="modal" id="add-movie-main-button"
+            type="button">Add Movie
+    </button>
     <table class="table table-dark table-hover" width="100%">
         <col style="width:3%">
         <col style="width:12%">
@@ -69,8 +71,13 @@
             <td data-th-text="${movie.year}"></td>
             <td data-th-text="${movie.description}" style="text-align: justify"></td>
             <td>
-                <i class="fas fa-pen-square" data-target="#movie-modal" data-toggle="modal"></i>
-                <i class="fas fa-trash"></i>
+                <div data-th-id="${movie.id}" style="cursor: pointer">
+                    <i class="fas fa-pen-square edit-icon" data-target="#movie-modal" data-toggle="modal"></i>
+                    <i class="fas fa-trash delete-icon"></i>
+                    <a data-th-href="'/movies/'+${movie.id}">
+                        <i class="fas fa-external-link-square-alt"></i>
+                    </a>
+                </div>
             </td>
         </tr>
         </tbody>
