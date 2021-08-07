@@ -32,7 +32,7 @@ public class ProjectApplication {
 			Poster movie1Poster1 = posterRepository.save(new Poster("https://m.media-amazon.com/images/M/MV5BMGFkZGY0NTgtMGEyZC00YzhjLTkyOWItYzMzOTljMDA3ZjU2XkEyXkFqcGdeQXVyNzc4NTU3Njg@._V1_FMjpg_UX1000_.jpg", movie1));
 			Poster movie1Poster2 = posterRepository.save(new Poster("https://m.media-amazon.com/images/M/MV5BNWU4NjVkMTItZjhjMS00MWMyLWFiOGUtY2QxMmNhM2MwZDkyXkEyXkFqcGdeQXVyODIyOTEyMzY@._V1_.jpg", movie1));
 			Poster movie1Poster3 = posterRepository.save(new Poster("https://m.media-amazon.com/images/M/MV5BM2M5OGI2MWYtZTEwYy00MmJjLWE5NzEtYzEyMTcyMjRiOWMyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg", movie1));
-			Poster movie1Poster4 = posterRepository.save(new Poster("https://film-book.com/wp-content/uploads/2021/07/Rebecca-Ferguson-Dune-Movie-Poster-01-1400x2075-1.jpg", movie1));
+			Poster movie1Poster4 = posterRepository.save(new Poster("https://m.media-amazon.com/images/M/MV5BNGNhNDFjY2MtNWRhNC00NWRlLWEzOWUtMjc3MzAzMGViYTZjXkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg", movie1));
 
 			Poster movie2Poster1 = posterRepository.save(new Poster("https://m.media-amazon.com/images/M/MV5BMTE5MDY1MGUtMmMxNi00YjA3LWIyZTYtN2FhOWJmNTY2NmM4XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg", movie2));
 			Poster movie2Poster2 = posterRepository.save(new Poster("http://www.crash.fr/wp-content/uploads/2015/05/LEE3.jpg", movie2));
