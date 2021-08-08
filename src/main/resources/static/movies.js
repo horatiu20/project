@@ -53,7 +53,7 @@ $(document).ready(()=>{
                 location.reload();
                 clearModal();
             }else{
-                alert("There where errors " + response.status);
+                alert("There where errors: " + response.status);
             }
         });
     }
