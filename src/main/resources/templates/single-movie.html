@@ -9,11 +9,15 @@
 </head>
 <title>Movie DataBase</title>
 <body>
-<link href="my-style.css" rel="stylesheet">
 <style>
     body {
     background-color: orange;
     }
+
+
+
+
+
 </style>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -37,6 +41,47 @@
     <h3 style="color:#484848" align="center">Posters</h3>
 </div>
 <br>
+<button class="btn btn-primary mb-4" style="margin-left:200px" data-target="#info-movie-modal" data-toggle="modal"
+        id="add-info-main-button"
+        type="button">Add Info
+</button>
+
+<div class="modal fade" id="info-movie-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Information</h4>
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modal-single-movie-poster">Poster (url)</label>
+                    <input class="form-control" id="modal-single-movie-poster" type="url"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-single-movie-trailer">Trailer (url)</label>
+                    <input class="form-control" id="modal-single-movie-trailer" type="url"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-single-movie-rating-user">Rating (user)</label>
+                    <input class="form-control" id="modal-single-movie-rating-user" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-single-movie-rating-value">Rating (value)</label>
+                    <input class="form-control" id="modal-single-movie-rating-value" min="0.0" max="10.0"
+                           type="number"/>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal" type="button">Dismiss</button>
+                <button class="btn btn-primary" data-dismiss="modal" id="add-info-button" type="button">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
@@ -49,7 +94,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://lh3.google.com/u/0/d/1TxIAOPMt6PUDcXPJ1wTqxLtKBECFdPBT=w1920-h969-iv1"
-                 alt="Poster" width="1000" class="mx-auto d-block rounded" >
+                 alt="Poster" width="1000" class="mx-auto d-block rounded">
         </div>
         <div class="carousel-item">
             <img src="https://lh3.google.com/u/0/d/1CxILmvvJ-CM-rvdmAO511s5EVM55Erus=w1920-h969-iv1"
@@ -87,12 +132,20 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/n9xhJrPXop4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/n9xhJrPXop4"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8g18jFHCLXk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/8g18jFHCLXk"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -110,6 +163,42 @@
     </div>
 </div>
 <br>
+<h3 style="color:#484848" align="center">Reviews</h3>
+<br>
+
+<div class="container mt-2" align="center">
+    <div class="media border p-2" style="width:1000px">
+        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
+             class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4 align="left">anonymous user1<small><i> Posted on July 11, 2021</i></small></h4>
+            <p align="left">awesome !</p>
+            <p align="right"><b>Review: 10</b></p>
+        </div>
+    </div>
+</div>
+<div class="container mt-2" align="center">
+    <div class="media border p-2" style="width:1000px">
+        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
+             class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4 align="left">anonymous user2<small><i> Posted on August 20, 2021</i></small></h4>
+            <p align="left">very good movie adaptation</p>
+            <p align="right"><b>Review: 9,5</b></p>
+        </div>
+    </div>
+</div>
+<div class="container mt-2" align="center">
+    <div class="media border p-2" style="width:1000px">
+        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
+             class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4 align="left">anonymous user3<small><i> Posted on September 7, 2021</i></small></h4>
+            <p align="left">could be better</p>
+            <p align="right"><b>Review: 7</b></p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
