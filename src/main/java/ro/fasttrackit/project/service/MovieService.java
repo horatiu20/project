@@ -13,31 +13,31 @@ import java.util.Optional;
 
 @Service
 public class MovieService {
-	private final MovieRepository repository;
+	private final MovieRepository movieRepository;
 	private final PosterRepository posterRepository;
 	private final RatingRepository ratingRepository;
 	private final TrailerRepository trailerRepository;
 
-	public MovieService(MovieRepository repository, PosterRepository posterRepository, RatingRepository ratingRepository, TrailerRepository trailerRepository) {
-		this.repository = repository;
+	public MovieService(MovieRepository movieRepository, PosterRepository posterRepository, RatingRepository ratingRepository, TrailerRepository trailerRepository) {
+		this.movieRepository = movieRepository;
 		this.posterRepository = posterRepository;
 		this.ratingRepository = ratingRepository;
 		this.trailerRepository = trailerRepository;
 	}
 
 	public List<Movie> getAllMovies() {
-		return repository.findAll();
+		return movieRepository.findAll();
 	}
 
 	public Movie postMovie(Movie newMovie) {
 		newMovie.setId(null);
-		return repository.save(newMovie);
+		return movieRepository.save(newMovie);
 	}
 
 	public Optional<Movie> putMovie(int movieId, Movie newMovie) {
-		return repository.findById(movieId)
+		return movieRepository.findById(movieId)
 				.map(dbMovie -> patchMovie(dbMovie, newMovie))
-				.map(repository::save);
+				.map(movieRepository::save);
 	}
 
 	@Transactional
@@ -45,8 +45,8 @@ public class MovieService {
 		posterRepository.deleteByMovieId(movieId);
 		trailerRepository.deleteByMovieId(movieId);
 		ratingRepository.deleteByMovieId(movieId);
-		Optional<Movie> movie = repository.findById(movieId);
-		movie.ifPresent(repository::delete);
+		Optional<Movie> movie = movieRepository.findById(movieId);
+		movie.ifPresent(movieRepository::delete);
 		return movie;
 	}
 
@@ -58,6 +58,6 @@ public class MovieService {
 	}
 
 	public Optional<Movie> getMovie(int movieId) {
-		return repository.findById(movieId);
+		return movieRepository.findById(movieId);
 	}
 }
