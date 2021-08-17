@@ -5,7 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ro.fasttrackit.project.service.MovieService;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("movies")
@@ -17,9 +20,11 @@ public class MovieUIController {
 	}
 
 	@GetMapping
-	String moviesPage(Model model, Integer movieId) {
+	String moviesPage(@RequestParam(required = false) Double averageRating, Model model) {
 		model.addAttribute("movies", service.getAllMovies());
-		model.addAttribute("averageRating", service.averageRating(movieId));
+		Optional.ofNullable(averageRating)
+				.flatMap(service::averageRating)
+				.ifPresent(rating -> model.addAttribute("averageRating", rating));
 		return "movies";
 	}
 
