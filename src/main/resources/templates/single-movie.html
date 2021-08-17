@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+    <script src="/single-movie.js"></script>
 </head>
 <title>Movie DataBase</title>
 <body>
@@ -17,7 +18,6 @@
     background-size: cover;
     background-clip: padding-box;
     }
-
 </style>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -29,15 +29,13 @@
         <li class="nav-item">
             <a class="nav-link" href="/movies" style="color:orange">Home</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" style="color:orange">Top movies</a>
-        </li>
     </ul>
 </nav>
 
 <div class="container-fluid">
     <br>
-    <h2 style="color:#484848" align="center"><b>__________ <span data-th-text="${movie.name}"></span> __________</b></h2>
+    <h2 style="color:#484848" align="center"><b>__________ <span data-th-text="${movie.name}"></span> __________</b>
+    </h2>
     <h3 style="color:#484848" align="center">Posters</h3>
 </div>
 <br>
@@ -62,15 +60,6 @@
                 <div class="form-group">
                     <label for="modal-single-movie-trailer">Trailer (url)</label>
                     <input class="form-control" id="modal-single-movie-trailer" type="url"/>
-                </div>
-                <div class="form-group">
-                    <label for="modal-single-movie-rating-user">Rating (user)</label>
-                    <input class="form-control" id="modal-single-movie-rating-user" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="modal-single-movie-rating-value">Rating (value)</label>
-                    <input class="form-control" id="modal-single-movie-rating-value" min="0.0" max="10.0"
-                           type="number"/>
                 </div>
             </div>
 
@@ -116,6 +105,23 @@
         <span class="carousel-control-next-icon"></span>
     </a>
 </div>
+<!--<div id="demo" class="carousel slide" data-ride="carousel">-->
+<!--    <ol class="carousel-indicators">-->
+<!--        <li data-target="#demo" data-slide-to="0" class="active"></li>-->
+<!--    </ol>-->
+
+<!--    <div data-th-each="poster: ${allPosters}" class="carousel-inner">-->
+<!--        <div class="carousel-item active">-->
+<!--            <img data-th-src="${poster.url}" alt="Poster" width="1000" class="mx-auto d-block rounded">-->
+<!--        </div>-->
+<!--        <a class="carousel-control-prev" href="#demo" data-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon"></span>-->
+<!--        </a>-->
+<!--        <a class="carousel-control-next" href="#demo" data-slide="next">-->
+<!--            <span class="carousel-control-next-icon"></span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
 <br>
 <h3 style="color:#484848" align="center">Trailers</h3>
 <br>
@@ -163,42 +169,42 @@
     </div>
 </div>
 <br>
-<h3 style="color:#484848" align="center">Reviews</h3>
-<br>
+<!--<h3 style="color:#484848" align="center">Reviews</h3>-->
+<!--<br>-->
 
-<div class="container mt-2" align="center">
-    <div class="media border p-2" style="width:1000px">
-        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
-             class="mr-3 mt-3 rounded-circle" style="width:60px;">
-        <div class="media-body">
-            <h4 align="left">anonymous user1<small><i> Posted on July 11, 2021</i></small></h4>
-            <p align="left">awesome !</p>
-            <p align="right"><b>Review: 10</b></p>
-        </div>
-    </div>
-</div>
-<div class="container mt-2" align="center">
-    <div class="media border p-2" style="width:1000px">
-        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
-             class="mr-3 mt-3 rounded-circle" style="width:60px;">
-        <div class="media-body">
-            <h4 align="left">anonymous user2<small><i> Posted on August 20, 2021</i></small></h4>
-            <p align="left">very good movie adaptation</p>
-            <p align="right"><b>Review: 9,5</b></p>
-        </div>
-    </div>
-</div>
-<div class="container mt-2" align="center">
-    <div class="media border p-2" style="width:1000px">
-        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"
-             class="mr-3 mt-3 rounded-circle" style="width:60px;">
-        <div class="media-body">
-            <h4 align="left">anonymous user3<small><i> Posted on September 7, 2021</i></small></h4>
-            <p align="left">could be better</p>
-            <p align="right"><b>Review: 7</b></p>
-        </div>
-    </div>
-</div>
+<!--<div class="container mt-2" align="center">-->
+<!--    <div class="media border p-2" style="width:1000px">-->
+<!--        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"-->
+<!--             class="mr-3 mt-3 rounded-circle" style="width:60px;">-->
+<!--        <div class="media-body">-->
+<!--            <h4 align="left">anonymous user1<small><i> Posted on July 11, 2021</i></small></h4>-->
+<!--            <p align="left">awesome !</p>-->
+<!--            <p align="right"><b>Review: 10</b></p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="container mt-2" align="center">-->
+<!--    <div class="media border p-2" style="width:1000px">-->
+<!--        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"-->
+<!--             class="mr-3 mt-3 rounded-circle" style="width:60px;">-->
+<!--        <div class="media-body">-->
+<!--            <h4 align="left">anonymous user2<small><i> Posted on August 20, 2021</i></small></h4>-->
+<!--            <p align="left">very good movie adaptation</p>-->
+<!--            <p align="right"><b>Review: 9,5</b></p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="container mt-2" align="center">-->
+<!--    <div class="media border p-2" style="width:1000px">-->
+<!--        <img src="https://lh3.google.com/u/0/d/1DqBJHkM-tdUDRcrvRpbaIDO_mAFKYFK6=w1920-h969-iv1" alt="user"-->
+<!--             class="mr-3 mt-3 rounded-circle" style="width:60px;">-->
+<!--        <div class="media-body">-->
+<!--            <h4 align="left">anonymous user3<small><i> Posted on September 7, 2021</i></small></h4>-->
+<!--            <p align="left">could be better</p>-->
+<!--            <p align="right"><b>Review: 7</b></p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 </html>

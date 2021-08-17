@@ -17,14 +17,17 @@ public class MovieUIController {
 	}
 
 	@GetMapping
-	String moviesPage(Model model) {
+	String moviesPage(Model model, Integer movieId) {
 		model.addAttribute("movies", service.getAllMovies());
+		model.addAttribute("averageRating", service.averageRating(movieId));
 		return "movies";
 	}
 
 	@GetMapping("{movieId}")
 	String singleMoviePage(@PathVariable int movieId, Model pageModel) {
 		pageModel.addAttribute("movie", service.getMovie(movieId).orElse(null));
+		pageModel.addAttribute("allPosters", service.getAllPosters(movieId));
+		pageModel.addAttribute("allTrailers", service.getAllTrailers(movieId));
 		return "single-movie";
 	}
 }

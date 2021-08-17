@@ -10,10 +10,10 @@ public class Movie {
 	@GeneratedValue
 	private Integer id;
 	private String name;
-	private int year;
+	private Integer year;
 	private String description;
 
-	public Movie(String name, int year, String description) {
+	public Movie(String name, Integer year, String description) {
 		this.name = name;
 		this.year = year;
 		this.description = description;
@@ -38,7 +38,7 @@ public class Movie {
 		this.name = name;
 	}
 
-	public int getYear() {
+	public Integer getYear() {
 		return year;
 	}
 

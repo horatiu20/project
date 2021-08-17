@@ -2,6 +2,9 @@ package ro.fasttrackit.project.service;
 
 import org.springframework.stereotype.Service;
 import ro.fasttrackit.project.model.entity.Movie;
+import ro.fasttrackit.project.model.entity.Poster;
+import ro.fasttrackit.project.model.entity.Rating;
+import ro.fasttrackit.project.model.entity.Trailer;
 import ro.fasttrackit.project.repository.MovieRepository;
 import ro.fasttrackit.project.repository.PosterRepository;
 import ro.fasttrackit.project.repository.RatingRepository;
@@ -10,6 +13,8 @@ import ro.fasttrackit.project.repository.TrailerRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class MovieService {
@@ -59,5 +64,26 @@ public class MovieService {
 
 	public Optional<Movie> getMovie(int movieId) {
 		return movieRepository.findById(movieId);
+	}
+
+	public List<String> getAllPosters(int movieId) {
+		List<String> allPosters = posterRepository.findById(movieId).stream()
+				.map(Poster::getUrl)
+				.collect(toList());
+		return allPosters;
+	}
+
+	public List<String> getAllTrailers(int movieId) {
+		List<String> allTrailers = trailerRepository.findById(movieId).stream()
+				.map(Trailer::getUrl)
+				.collect(toList());
+		return allTrailers;
+	}
+
+	public double averageRating(int movieId) {
+		return ratingRepository.findById(movieId).stream()
+				.mapToDouble(Rating::getMovieRating)
+				.average()
+				.orElse(0.0);
 	}
 }
