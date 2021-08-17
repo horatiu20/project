@@ -20,11 +20,8 @@ public class MovieUIController {
 	}
 
 	@GetMapping
-	String moviesPage(@RequestParam(required = false) Double averageRating, Model model) {
+	String moviesPage(Model model) {
 		model.addAttribute("movies", service.getAllMovies());
-		Optional.ofNullable(averageRating)
-				.flatMap(service::averageRating)
-				.ifPresent(rating -> model.addAttribute("averageRating", rating));
 		return "movies";
 	}
 

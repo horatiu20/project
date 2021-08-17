@@ -12,11 +12,13 @@ public class Movie {
 	private String name;
 	private Integer year;
 	private String description;
+	private double rating;
 
-	public Movie(String name, Integer year, String description) {
+	public Movie(String name, Integer year, String description, double rating) {
 		this.name = name;
 		this.year = year;
 		this.description = description;
+		this.rating = rating;
 	}
 
 	Movie() {
@@ -54,6 +56,14 @@ public class Movie {
 		this.description = description;
 	}
 
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie{" +
@@ -61,6 +71,7 @@ public class Movie {
 				", name='" + name + '\'' +
 				", year=" + year +
 				", description='" + description + '\'' +
+				", rating=" + rating +
 				'}';
 	}
 }

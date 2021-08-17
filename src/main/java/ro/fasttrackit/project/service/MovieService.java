@@ -3,11 +3,9 @@ package ro.fasttrackit.project.service;
 import org.springframework.stereotype.Service;
 import ro.fasttrackit.project.model.entity.Movie;
 import ro.fasttrackit.project.model.entity.Poster;
-import ro.fasttrackit.project.model.entity.Rating;
 import ro.fasttrackit.project.model.entity.Trailer;
 import ro.fasttrackit.project.repository.MovieRepository;
 import ro.fasttrackit.project.repository.PosterRepository;
-import ro.fasttrackit.project.repository.RatingRepository;
 import ro.fasttrackit.project.repository.TrailerRepository;
 
 import javax.transaction.Transactional;
@@ -20,13 +18,11 @@ import static java.util.stream.Collectors.toList;
 public class MovieService {
 	private final MovieRepository movieRepository;
 	private final PosterRepository posterRepository;
-	private final RatingRepository ratingRepository;
 	private final TrailerRepository trailerRepository;
 
-	public MovieService(MovieRepository movieRepository, PosterRepository posterRepository, RatingRepository ratingRepository, TrailerRepository trailerRepository) {
+	public MovieService(MovieRepository movieRepository, PosterRepository posterRepository, TrailerRepository trailerRepository) {
 		this.movieRepository = movieRepository;
 		this.posterRepository = posterRepository;
-		this.ratingRepository = ratingRepository;
 		this.trailerRepository = trailerRepository;
 	}
 
@@ -49,7 +45,6 @@ public class MovieService {
 	public Optional<Movie> deleteMovie(int movieId) {
 		posterRepository.deleteByMovieId(movieId);
 		trailerRepository.deleteByMovieId(movieId);
-		ratingRepository.deleteByMovieId(movieId);
 		Optional<Movie> movie = movieRepository.findById(movieId);
 		movie.ifPresent(movieRepository::delete);
 		return movie;
@@ -78,12 +73,5 @@ public class MovieService {
 				.map(Trailer::getUrl)
 				.collect(toList());
 		return allTrailers;
-	}
-
-	public double averageRating(int movieId) {
-		return ratingRepository.findById(movieId).stream()
-				.mapToDouble(Rating::getMovieRating)
-				.average()
-				.orElse(0.0);
 	}
 }

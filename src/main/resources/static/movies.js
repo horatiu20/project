@@ -13,13 +13,15 @@ $(document).ready(()=>{
         const name = $('#modal-movie-name').val();
         const year = $('#modal-movie-year').val();
         const description = $('#modal-movie-description').val();
+        const rating = $('#modal-movie-rating').val();
 
         fetch(`/api/movies/${movieToEdit}`, {
             method: 'PUT',
             body: JSON.stringify({
                 name: name,
                 year: year,
-                description: description
+                description: description,
+                rating: rating
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -37,13 +39,15 @@ $(document).ready(()=>{
         const name = $('#modal-movie-name').val();
         const year = $('#modal-movie-year').val();
         const description = $('#modal-movie-description').val();
+        const rating = $('#modal-movie-rating').val();
 
         fetch('/api/movies', {
             method: 'POST',
             body: JSON.stringify({
                 name: name,
                 year: year,
-                description: description
+                description: description,
+                rating: rating
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -62,6 +66,7 @@ $(document).ready(()=>{
         $('#modal-movie-name').val('');
         $('#modal-movie-year').val('');
         $('#modal-movie-description').val('');
+        $('#modal-movie-rating').val('');
     }
 
     $('.delete-icon').click(function () {
@@ -77,10 +82,12 @@ $(document).ready(()=>{
         const name = row.children[1].innerText;
         const year = row.children[2].innerText;
         const description = row.children[3].innerText;
+        const rating = row.children[4].innerText;
 
         $('#modal-movie-name').val(name);
         $('#modal-movie-year').val(year);
         $('#modal-movie-description').val(description);
+        $('#modal-movie-rating').val(rating);
     });
 
     $('#add-movie-main-button').click(() => {

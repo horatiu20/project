@@ -6,11 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import ro.fasttrackit.project.model.entity.Movie;
 import ro.fasttrackit.project.model.entity.Poster;
-import ro.fasttrackit.project.model.entity.Rating;
 import ro.fasttrackit.project.model.entity.Trailer;
 import ro.fasttrackit.project.repository.MovieRepository;
 import ro.fasttrackit.project.repository.PosterRepository;
-import ro.fasttrackit.project.repository.RatingRepository;
 import ro.fasttrackit.project.repository.TrailerRepository;
 
 @SpringBootApplication
@@ -21,13 +19,13 @@ public class ProjectApplication {
 	}
 
 	@Bean
-	CommandLineRunner atStartup(MovieRepository movieRepository, PosterRepository posterRepository, TrailerRepository trailerRepository, RatingRepository ratingRepository) {
+	CommandLineRunner atStartup(MovieRepository movieRepository, PosterRepository posterRepository, TrailerRepository trailerRepository) {
 		return args -> {
-			Movie movie1 = movieRepository.save(new Movie("Dune", 2021, "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy."));
-			Movie movie2 = movieRepository.save(new Movie("Foundation", 2021, "A complex saga of humans scattered on planets throughout the galaxy all living under the rule of the Galactic Empire."));
-			Movie movie3 = movieRepository.save(new Movie("The Matrix", 1999, "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence."));
-			Movie movie4 = movieRepository.save(new Movie("The Witcher", 2019, "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts."));
-			Movie movie5 = movieRepository.save(new Movie("Star Trek: Discovery", 2017, "Ten years before Kirk, Spock, and the Enterprise, the USS Discovery discovers new worlds and lifeforms as one Starfleet officer learns to understand all things alien."));
+			Movie movie1 = movieRepository.save(new Movie("Dune", 2021, "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.", 10));
+			Movie movie2 = movieRepository.save(new Movie("Foundation", 2021, "A complex saga of humans scattered on planets throughout the galaxy all living under the rule of the Galactic Empire.", 9.5));
+			Movie movie3 = movieRepository.save(new Movie("The Matrix", 1999, "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.", 8.8));
+			Movie movie4 = movieRepository.save(new Movie("The Witcher", 2019, "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.", 9.2));
+			Movie movie5 = movieRepository.save(new Movie("Star Trek: Discovery", 2017, "Ten years before Kirk, Spock, and the Enterprise, the USS Discovery discovers new worlds and lifeforms as one Starfleet officer learns to understand all things alien.", 8.5));
 
 			Poster movie1Poster1 = posterRepository.save(new Poster("https://lh3.google.com/u/0/d/1TxIAOPMt6PUDcXPJ1wTqxLtKBECFdPBT=w1920-h969-iv1", movie1));
 			Poster movie1Poster2 = posterRepository.save(new Poster("https://lh3.google.com/u/0/d/1CxILmvvJ-CM-rvdmAO511s5EVM55Erus=w1920-h969-iv1", movie1));
@@ -68,26 +66,6 @@ public class ProjectApplication {
 
 			Trailer movie5Trailer1 = trailerRepository.save(new Trailer("https://www.youtube.com/embed/oWnYtyNKPsA", movie5));
 			Trailer movie5Trailer2 = trailerRepository.save(new Trailer("https://www.youtube.com/embed/09Cd7NKKvDc", movie5));
-
-			Rating movie1Rating1 = ratingRepository.save(new Rating("user1", 10, movie1));
-			Rating movie1Rating2 = ratingRepository.save(new Rating("user2", 8, movie1));
-			Rating movie1Rating3 = ratingRepository.save(new Rating("user3", 7, movie1));
-
-			Rating movie2Rating1 = ratingRepository.save(new Rating("user1", 5, movie2));
-			Rating movie2Rating2 = ratingRepository.save(new Rating("user2", 9, movie2));
-			Rating movie2Rating3 = ratingRepository.save(new Rating("user3", 7, movie2));
-
-			Rating movie3Rating1 = ratingRepository.save(new Rating("user1", 9, movie3));
-			Rating movie3Rating2 = ratingRepository.save(new Rating("user2", 10, movie3));
-			Rating movie3Rating3 = ratingRepository.save(new Rating("user3", 9, movie3));
-
-			Rating movie4Rating1 = ratingRepository.save(new Rating("user1", 6, movie4));
-			Rating movie4Rating2 = ratingRepository.save(new Rating("user2", 8, movie4));
-			Rating movie4Rating3 = ratingRepository.save(new Rating("user3", 9, movie4));
-
-			Rating movie5Rating1 = ratingRepository.save(new Rating("user1", 8, movie5));
-			Rating movie5Rating2 = ratingRepository.save(new Rating("user2", 9, movie5));
-			Rating movie5Rating3 = ratingRepository.save(new Rating("user3", 8, movie5));
 		};
 	}
 }

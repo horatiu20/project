@@ -63,7 +63,7 @@
             <td data-th-text="${movie.name}"></td>
             <td data-th-text="${movie.year}"></td>
             <td data-th-text="${movie.description}" style="text-align: justify"></td>
-            <td data-th-text="${averageRating}"></td>
+            <td data-th-text="${movie.rating}"></td>
             <td>
                 <div data-th-id="${movie.id}" style="cursor: pointer">
                     <i class="fas fa-pen-square edit-icon" data-target="#movie-modal" data-toggle="modal"></i>
@@ -78,7 +78,7 @@
     </table>
     <script>
     function sortTable(n) {
-      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
       table = document.getElementById("mainTable");
       switching = true;
       dir = "asc";
@@ -104,9 +104,9 @@
         if (shouldSwitch) {
           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
           switching = true;
-          switchcount ++;
+          switchCount ++;
         } else {
-          if (switchcount == 0 && dir == "asc") {
+          if (switchCount == 0 && dir == "asc") {
             dir = "desc";
             switching = true;
           }
@@ -138,11 +138,7 @@
                     <input class="form-control" id="modal-movie-description" type="text"/>
                 </div>
                 <div class="form-group">
-                    <label for="modal-movie-averageRating-user">Rating (userName)</label>
-                    <input class="form-control" id="modal-movie-averageRating-user" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="modal-movie-averageRating-value">Rating (value)</label>
+                    <label for="modal-movie-averageRating-value">Rating</label>
                     <input class="form-control" id="modal-movie-averageRating-value" min="0.0" type="number" max="10.0"/>
                 </div>
             </div>
