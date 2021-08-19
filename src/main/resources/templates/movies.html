@@ -31,7 +31,22 @@
         <li class="nav-item">
             <a class="nav-link" href="/movies" style="color:orange">Home</a>
         </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="/movies" style="color:orange">Info</a>
+        </li>
     </ul>
+    <input class="form-control ml-5 mr-5" id="myInput" type="text" placeholder="Search anything from database...">
+
+    <script>
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+            $("#mainTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </nav>
 
 <div class="container-fluid">
@@ -49,12 +64,17 @@
         <col style="width:7%">
         <thead>
         <tr>
-            <th onclick="sortTable(0)" style="cursor: pointer">No.</th>
-            <th onclick="sortTable(1)" style="cursor: pointer">Name</th>
-            <th onclick="sortTable(2)" style="cursor: pointer">Release year</th>
-            <th >Plot</th>
-            <th onclick="sortTable(3)" style="cursor: pointer">Rating</th>
+            <th onclick="sortTable(0)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">No.</th>
+            <th onclick="sortTable(1)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Name</th>
+            <th onclick="sortTable(2)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Release year</th>
+            <th>Plot</th>
+            <th onclick="sortTable(3)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Rating</th>
             <th style="vertical-align: middle">Edit</th>
+            <script>
+                $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
         </tr>
         </thead>
         <tbody>
