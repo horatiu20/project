@@ -29,4 +29,9 @@ public class MovieUIController {
 		pageModel.addAttribute("allTrailers", service.getAllTrailers(movieId));
 		return "single-movie";
 	}
+
+	@GetMapping("info")
+	String infoPage(Model pageInfo){
+		return "info-page";
+	}
 }
