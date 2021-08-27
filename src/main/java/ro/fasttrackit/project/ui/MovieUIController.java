@@ -31,7 +31,7 @@ public class MovieUIController {
 	}
 
 	@GetMapping("info")
-	String infoPage(Model pageInfo){
+	String infoPage(Model pageInfo) {
 		return "info-page";
 	}
 }

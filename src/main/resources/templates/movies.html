@@ -14,7 +14,7 @@
 <link href="my-style.css" rel="stylesheet">
 <style>
     body {
-    background-image: url(https://lh3.google.com/u/0/d/19cFoovQIWQPE4euHu5XQgxCxd0YFg8q7=w1920-h969-iv1);
+    background-image: url(/images/movie-page.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -24,8 +24,8 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="#">
-        <img alt="Logo" height="50" class="rounded-circle"
-             src="https://thumbs.dreamstime.com/b/movie-illustration-logo-vector-design-film-178252125.jpg" width="50">
+        <img alt="Logo" class="rounded-circle" height="50"
+             src="/images/logo.jpg" width="50">
     </a>
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -35,7 +35,7 @@
             <a class="nav-link" href="/movies/info" style="color:orange">Info</a>
         </li>
     </ul>
-    <input class="form-control ml-5 mr-5" id="myInput" type="text" placeholder="Search anything from database...">
+    <input class="form-control ml-5 mr-5" id="myInput" placeholder="Search anything from database..." type="text">
 
     <script>
         $(document).ready(function(){
@@ -51,12 +51,12 @@
 
 <div class="container-fluid">
     <br>
-    <h2 style="color:#484848" align="center"><b>Movie DataBase</b></h2>
+    <h2 align="center" style="color:#484848"><b>Movie DataBase</b></h2>
     <br>
     <button class="btn btn-primary mb-3" data-target="#movie-modal" data-toggle="modal" id="add-movie-main-button"
             type="button">Add Movie
     </button>
-    <table id="mainTable" class="table table-dark table-hover" width="100%">
+    <table class="table table-dark table-hover" id="mainTable" width="100%">
         <col style="width:3%">
         <col style="width:12%">
         <col style="width:7%">
@@ -64,11 +64,13 @@
         <col style="width:7%">
         <thead>
         <tr>
-            <th onclick="sortTable(0)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">No.</th>
-            <th onclick="sortTable(1)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Name</th>
-            <th onclick="sortTable(2)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Release year</th>
+            <th data-toggle="tooltip" onclick="sortTable(0)" style="cursor: pointer" title="Click to sort">No.</th>
+            <th data-toggle="tooltip" onclick="sortTable(1)" style="cursor: pointer" title="Click to sort">Name</th>
+            <th data-toggle="tooltip" onclick="sortTable(2)" style="cursor: pointer" title="Click to sort">Release
+                year
+            </th>
             <th>Plot</th>
-            <th onclick="sortTable(3)" style="cursor: pointer" data-toggle="tooltip" title="Click to sort">Rating</th>
+            <th data-toggle="tooltip" onclick="sortTable(3)" style="cursor: pointer" title="Click to sort">Rating</th>
             <th style="vertical-align: middle">Edit</th>
             <script>
                 $(document).ready(function(){
@@ -159,7 +161,7 @@
                 </div>
                 <div class="form-group">
                     <label for="modal-movie-rating">Rating</label>
-                    <input class="form-control" id="modal-movie-rating" min="0.0" type="number" max="10.0"/>
+                    <input class="form-control" id="modal-movie-rating" max="10.0" min="0.0" type="number"/>
                 </div>
             </div>
 
