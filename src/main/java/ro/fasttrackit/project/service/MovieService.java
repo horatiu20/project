@@ -2,28 +2,17 @@ package ro.fasttrackit.project.service;
 
 import org.springframework.stereotype.Service;
 import ro.fasttrackit.project.model.entity.Movie;
-import ro.fasttrackit.project.model.entity.Poster;
-import ro.fasttrackit.project.model.entity.Trailer;
 import ro.fasttrackit.project.repository.MovieRepository;
-import ro.fasttrackit.project.repository.PosterRepository;
-import ro.fasttrackit.project.repository.TrailerRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class MovieService {
 	private final MovieRepository movieRepository;
-	private final PosterRepository posterRepository;
-	private final TrailerRepository trailerRepository;
 
-	public MovieService(MovieRepository movieRepository, PosterRepository posterRepository, TrailerRepository trailerRepository) {
+	public MovieService(MovieRepository movieRepository) {
 		this.movieRepository = movieRepository;
-		this.posterRepository = posterRepository;
-		this.trailerRepository = trailerRepository;
 	}
 
 	public List<Movie> getAllMovies() {
@@ -41,10 +30,7 @@ public class MovieService {
 				.map(movieRepository::save);
 	}
 
-	@Transactional
 	public Optional<Movie> deleteMovie(int movieId) {
-		posterRepository.deleteByMovieId(movieId);
-		trailerRepository.deleteByMovieId(movieId);
 		Optional<Movie> movie = movieRepository.findById(movieId);
 		movie.ifPresent(movieRepository::delete);
 		return movie;
@@ -62,17 +48,11 @@ public class MovieService {
 		return movieRepository.findById(movieId);
 	}
 
-	public List<String> getAllPosters(int movieId) {
-		List<String> allPosters = posterRepository.findById(movieId).stream()
-				.map(Poster::getUrl)
-				.collect(toList());
-		return allPosters;
+	public Movie getMovieById(Integer movieId) {
+		return getOrThrow(movieId);
 	}
 
-	public List<String> getAllTrailers(int movieId) {
-		List<String> allTrailers = trailerRepository.findById(movieId).stream()
-				.map(Trailer::getUrl)
-				.collect(toList());
-		return allTrailers;
+	private Movie getOrThrow(int movieId) {
+		return movieRepository.findById(movieId).orElse(null);
 	}
 }

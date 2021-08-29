@@ -6,6 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="/single-movie.css" rel="stylesheet">
     <script src="/single-movie.js"></script>
 </head>
 <title>Movie DataBase</title>
@@ -37,42 +39,13 @@
 
 <div class="container-fluid">
     <br>
-    <h2 align="center" style="color:#484848"><b>__________ <span data-th-text="${movie.name}"></span> __________</b>
-    </h2>
-    <h3 align="center" style="color:#484848">Posters</h3>
+    <h2 align="center" style="color:#484848"><b>__________ <span data-th-text="${movie.name}" style="text-shadow:5px 5px 10px DimGray"></span>__________</b></h2>
+    <br>
+    <h4 align="center" data-th-text="${movie.description}"></h4>
 </div>
-<br>
-<button class="btn btn-primary mb-4" data-target="#info-movie-modal" data-toggle="modal" id="add-info-main-button"
-        style="margin-left:200px"
-        type="button">Add Info
-</button>
-
-<div class="modal fade" id="info-movie-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Information</h4>
-                <button class="close" data-dismiss="modal" type="button">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="modal-single-movie-poster">Poster (url)</label>
-                    <input class="form-control" id="modal-single-movie-poster" type="url"/>
-                </div>
-                <div class="form-group">
-                    <label for="modal-single-movie-trailer">Trailer (url)</label>
-                    <input class="form-control" id="modal-single-movie-trailer" type="url"/>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal" type="button">Dismiss</button>
-                <button class="btn btn-primary" data-dismiss="modal" id="add-info-button" type="button">Save
-                </button>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid">
+    <br>
+    <h3 align="center" style="color:#484848"><span style="text-shadow:5px 5px 10px DimGray">Posters</span></h3>
 </div>
 
 <div class="carousel slide" data-ride="carousel" id="demo">
@@ -86,21 +59,21 @@
     <div class="carousel-inner">
         <div class="carousel-item"
              data-th-classappend="${iter.index==0} ? active : inactive"
-             data-th-each="url, iter : ${allPosters.url}">
-            <img class="img-fluid"
-                 data-th-src="${poster.url}">
+             data-th-each="posters, iter : ${allPosters.posters}">
+            <img class="mx-auto d-block rounded"
+                 alt="Poster" width="1000"
+                 data-th-src="${posters.url}" style="box-shadow: 0 5px 20px black">
         </div>
     </div>
-    <a class="carousel-control-prev" data-slide="prev" href="#demo">
+    <a class="carousel-control-prev" data-slide="prev" href="#demo" style="margin-left:260px">
         <span class="carousel-control-prev-icon"></span>
     </a>
-    <a class="carousel-control-next" data-slide="next" href="#demo">
+    <a class="carousel-control-next" data-slide="next" href="#demo" style="margin-right:260px">
         <span class="carousel-control-next-icon"></span>
     </a>
 </div>
 <br>
-<h3 align="center" style="color:#484848">Trailers</h3>
-<br>
+<h3 align="center" style="color:#484848"><span style="text-shadow:5px 5px 10px DimGray">Trailers</span></h3>
 
 <div class="top-content">
     <div class="container">
@@ -111,31 +84,24 @@
                         <li class="active" data-slide-to="0" data-target="#carousel-example"></li>
                         <li data-slide-to="1" data-target="#carousel-example"></li>
                     </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
+                    <div class="carousel-inner" style="box-shadow: 0 5px 20px black">
+                        <div class="carousel-item"
+                             data-th-classappend="${iter.index==0} ? active : inactive"
+                             data-th-each="trailers, iter : ${allTrailers.trailers}">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen
                                         class="embed-responsive-item" frameborder="0"
-                                        src="https://www.youtube.com/embed/n9xhJrPXop4"
-                                        title="YouTube video player"></iframe>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen
-                                        class="embed-responsive-item" frameborder="0"
-                                        src="https://www.youtube.com/embed/8g18jFHCLXk"
+                                        data-th-src="${trailers.url}"
                                         title="YouTube video player"></iframe>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" data-slide="prev" href="#carousel-example" role="button">
+                    <a class="carousel-control-prev" data-slide="prev" href="#carousel-example" role="button" style="margin-left:-100px">
                         <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" data-slide="next" href="#carousel-example" role="button">
+                    <a class="carousel-control-next" data-slide="next" href="#carousel-example" role="button" style="margin-right:-100px">
                         <span aria-hidden="true" class="carousel-control-next-icon"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -144,5 +110,6 @@
         </div>
     </div>
 </div>
+<br>
 </body>
 </html>

@@ -51,12 +51,12 @@
 
 <div class="container-fluid">
     <br>
-    <h2 align="center" style="color:#484848"><b>Movie DataBase</b></h2>
+    <h2 align="center" style="color:#484848"><span style="text-shadow:5px 5px 10px DimGray"><b>Movie DataBase</b></span></h2>
     <br>
     <button class="btn btn-primary mb-3" data-target="#movie-modal" data-toggle="modal" id="add-movie-main-button"
-            type="button">Add Movie
+            type="button" style="box-shadow: 0 5px 10px black">Add Movie
     </button>
-    <table class="table table-dark table-hover" id="mainTable" width="100%">
+    <table class="table table-dark table-hover" id="mainTable" width="100%" style="box-shadow: 0 5px 20px black">
         <col style="width:3%">
         <col style="width:12%">
         <col style="width:7%">
@@ -142,7 +142,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Movie</h4>
+                <h4 class="modal-title">Add Movie</h4>
                 <button class="close" data-dismiss="modal" type="button">&times;</button>
             </div>
 
@@ -162,6 +162,30 @@
                 <div class="form-group">
                     <label for="modal-movie-rating">Rating</label>
                     <input class="form-control" id="modal-movie-rating" max="10.0" min="0.0" type="number"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-poster1">Poster_1 url</label>
+                    <input class="form-control" id="modal-movie-poster1" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-poster2">Poster_2 url</label>
+                    <input class="form-control" id="modal-movie-poster2" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-poster3">Poster_3 url</label>
+                    <input class="form-control" id="modal-movie-poster3" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-poster4">Poster_4 url</label>
+                    <input class="form-control" id="modal-movie-poster4" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-trailer1">Trailer_1 url</label>
+                    <input class="form-control" id="modal-movie-trailer1" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="modal-movie-trailer2">Trailer_2 url</label>
+                    <input class="form-control" id="modal-movie-trailer2" type="text"/>
                 </div>
             </div>
 

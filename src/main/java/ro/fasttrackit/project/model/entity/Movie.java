@@ -1,9 +1,7 @@
 package ro.fasttrackit.project.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -15,11 +13,18 @@ public class Movie {
 	private String description;
 	private double rating;
 
-	public Movie(String name, Integer year, String description, double rating) {
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Poster> posters;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Trailer> trailers;
+
+	public Movie(String name, Integer year, String description, double rating, List<Poster> posters, List<Trailer> trailers) {
 		this.name = name;
 		this.year = year;
 		this.description = description;
 		this.rating = rating;
+		this.posters = posters;
+		this.trailers = trailers;
 	}
 
 	Movie() {
@@ -45,7 +50,7 @@ public class Movie {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
@@ -65,6 +70,22 @@ public class Movie {
 		this.rating = rating;
 	}
 
+	public List<Poster> getPosters() {
+		return posters;
+	}
+
+	public void setPosters(List<Poster> posters) {
+		this.posters = posters;
+	}
+
+	public List<Trailer> getTrailers() {
+		return trailers;
+	}
+
+	public void setTrailers(List<Trailer> trailers) {
+		this.trailers = trailers;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie{" +
@@ -73,6 +94,8 @@ public class Movie {
 				", year=" + year +
 				", description='" + description + '\'' +
 				", rating=" + rating +
+				", posters=" + posters +
+				", trailers=" + trailers +
 				'}';
 	}
 }

@@ -25,8 +25,8 @@ public class MovieUIController {
 	@GetMapping("{movieId}")
 	String singleMoviePage(@PathVariable int movieId, Model pageModel) {
 		pageModel.addAttribute("movie", service.getMovie(movieId).orElse(null));
-		pageModel.addAttribute("allPosters", service.getAllPosters(movieId));
-		pageModel.addAttribute("allTrailers", service.getAllTrailers(movieId));
+		pageModel.addAttribute("allPosters", service.getMovieById(movieId));
+		pageModel.addAttribute("allTrailers", service.getMovieById(movieId));
 		return "single-movie";
 	}
 
