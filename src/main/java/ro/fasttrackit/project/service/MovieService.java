@@ -41,6 +41,8 @@ public class MovieService {
 		dbMovie.setYear(movie.getYear());
 		dbMovie.setDescription(movie.getDescription());
 		dbMovie.setRating(movie.getRating());
+		dbMovie.setPosters(movie.getPosters());
+		dbMovie.setTrailers(movie.getTrailers());
 		return dbMovie;
 	}
 
