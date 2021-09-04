@@ -39,73 +39,48 @@ class ProjectApplicationTests {
 	@Transactional
 	@DisplayName("POST a new movie works")
 	void postMovie() {
-		service.postMovie(
-				new Movie("newMovie", 1999, "newMovie description", 8.7, List.of(), List.of()));
+		service.postMovie(new Movie("movie", 1999, "movie description", 8.7, List.of(), List.of()));
 
 		assertThat(repository.findAll())
 				.extracting("name")
-				.containsExactly("newMovie");
+				.containsExactly("movie");
 	}
 
-//	@Test
-//	@Transactional
-//	@DisplayName("PUT a new movie works")
-//	void putMovie() {
-//		repository.save(new Movie("oldMovie", 1999, "oldMovie description", 8.7, List.of(), List.of()));
-//
-//		service.putMovie(1, new Movie("newMovie", 2021, "newMovie description", 9.6, List.of(), List.of()));
-//
-//		assertThat(repository.findAll())
-//				.extracting("name")
-//				.containsExactly("oldMovie");
-//	}
-//
-//	@Test
-//	@Transactional
-//	@DisplayName("PATCH an old movie works")
-//	void patchMovie() {
-//		service.postMovie(
-//				new Movie("movie1",
-//						2021,
-//						"first movie description",
-//						9.6,
-//						List.of(),
-//						List.of()));
-//
-//		service.patchMovie(
-//				new Movie("movie1",
-//						2021,
-//						"first movie description",
-//						9.6,
-//						List.of(),
-//						List.of()),
-//				new Movie("movie2",
-//						2021,
-//						"second movie description",
-//						9.6,
-//						List.of(),
-//						List.of()));
-//
-//		assertThat(repository.findAll())
-//				.extracting("name")
-//				.containsExactly("movie2");
-//	}
-//
-//	@Test
-//	@Transactional
-//	@DisplayName("DELETE a movie works")
-//	void deleteMovie() {
-//		service.putMovie(1,
-//				new Movie("movie",
-//						2001,
-//						"movie description",
-//						8.3,
-//						List.of(),
-//						List.of()));
-//
-//		service.deleteMovie(1);
-//
-//		assertThat(repository.findAll())
-//				.isEmpty();
-//	}
+	@Test
+	@Transactional
+	@DisplayName("PUT a movie works")   //not working
+	void putMovie() {
+		service.postMovie(new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()));
+		service.putMovie(1, new Movie("movie2", 2021, "movie2 description", 9.6, List.of(), List.of()));
+
+		assertThat(repository.findAll())
+				.extracting("name")
+				.containsExactly("movie2");
+	}
+
+	@Test
+	@Transactional
+	@DisplayName("PATCH an old movie works")    //not working
+	void patchMovie() {
+		service.postMovie(new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()));
+
+		service.patchMovie(
+				new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()),
+				new Movie("movie2", 2021, "second movie description", 9.6, List.of(), List.of()));
+
+		assertThat(repository.findAll())
+				.extracting("name")
+				.containsExactly("movie2");
+	}
+
+	@Test
+	@Transactional
+	@DisplayName("DELETE a movie works")
+	void deleteMovie() {
+		service.postMovie(new Movie("movie", 1999, "movie description", 8.7, List.of(), List.of()));
+		service.deleteMovie(1);
+
+		assertThat(repository.findAll())
+				.isEmpty();
+	}
 }
