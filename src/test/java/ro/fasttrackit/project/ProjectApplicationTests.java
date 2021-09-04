@@ -27,22 +27,12 @@ class ProjectApplicationTests {
 	@DisplayName("GET all movies works")
 	void getAllMovies() {
 		repository.saveAll(List.of(
-				new Movie("Dune",
-						2021,
-						"Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
-						9.6,
-						List.of(),
-						List.of()),
-				new Movie("Foundation",
-						2021,
-						"A complex saga of humans scattered on planets throughout the galaxy all living under the rule of the Galactic Empire.",
-						8.5,
-						List.of(),
-						List.of())));
+				new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()),
+				new Movie("movie2", 2021, "second movie description", 8.5, List.of(), List.of())));
 
 		assertThat(service.getAllMovies())
 				.extracting("name")
-				.containsExactly("Dune", "Foundation");
+				.containsExactly("movie1", "movie2");
 	}
 
 	@Test
@@ -50,92 +40,72 @@ class ProjectApplicationTests {
 	@DisplayName("POST a new movie works")
 	void postMovie() {
 		service.postMovie(
-				new Movie("The Matrix",
-						1999,
-						"When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
-						8.7,
-						List.of(),
-						List.of()));
+				new Movie("newMovie", 1999, "newMovie description", 8.7, List.of(), List.of()));
 
 		assertThat(repository.findAll())
 				.extracting("name")
-				.containsExactly("The Matrix");
+				.containsExactly("newMovie");
 	}
 
 //	@Test
 //	@Transactional
 //	@DisplayName("PUT a new movie works")
 //	void putMovie() {
-//		repository.saveAll(List.of(
-//				new Movie("Dune",
-//						2021,
-//						"Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
-//						9.6,
-//						List.of(),
-//						List.of()),
-//				new Movie("Foundation",
-//						2021,
-//						"A complex saga of humans scattered on planets throughout the galaxy all living under the rule of the Galactic Empire.",
-//						8.5,
-//						List.of(),
-//						List.of())));
+//		repository.save(new Movie("oldMovie", 1999, "oldMovie description", 8.7, List.of(), List.of()));
 //
-//		assertThat(service.putMovie(1,
-//						new Movie("The Matrix",
-//								1999,
-//								"When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
-//								8.7,
-//								List.of(),
-//								List.of())))
-//				.contains();
+//		service.putMovie(1, new Movie("newMovie", 2021, "newMovie description", 9.6, List.of(), List.of()));
+//
+//		assertThat(repository.findAll())
+//				.extracting("name")
+//				.containsExactly("oldMovie");
 //	}
 //
 //	@Test
 //	@Transactional
-//	@DisplayName("PATCH a new movie works")
+//	@DisplayName("PATCH an old movie works")
 //	void patchMovie() {
-//		repository.save(
-//				new Movie("Dune",
+//		service.postMovie(
+//				new Movie("movie1",
 //						2021,
-//						"Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+//						"first movie description",
 //						9.6,
 //						List.of(),
 //						List.of()));
 //
-//		assertThat(service.patchMovie(
-//				new Movie("Dune",
+//		service.patchMovie(
+//				new Movie("movie1",
 //						2021,
-//						"Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+//						"first movie description",
 //						9.6,
 //						List.of(),
 //						List.of()),
-//				new Movie("Dune - part2",
+//				new Movie("movie2",
 //						2021,
-//						"Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+//						"second movie description",
 //						9.6,
 //						List.of(),
-//						List.of())))
+//						List.of()));
+//
+//		assertThat(repository.findAll())
 //				.extracting("name")
-//				.isEqualTo("Dune");
+//				.containsExactly("movie2");
 //	}
-}
-
-
-
-
-
+//
 //	@Test
 //	@Transactional
-//	@DisplayName("Get all movies works")
-//	void getAllMovies() {
-//		//SETUP
-//		repo.save(new Movie("Test1", 1111, "desc", 2.0, List.of(), List.of()));
+//	@DisplayName("DELETE a movie works")
+//	void deleteMovie() {
+//		service.putMovie(1,
+//				new Movie("movie",
+//						2001,
+//						"movie description",
+//						8.3,
+//						List.of(),
+//						List.of()));
 //
-//		//RUN & ASSERT
-//		assertThat(service.getAllMovies())
-//				.extracting("name")
-//				.containsExactly("Test1");
+//		service.deleteMovie(1);
+//
+//		assertThat(repository.findAll())
+//				.isEmpty();
 //	}
-//
-////apoi teste cu add in serviciu si verifici in repo
-////apoi mai poti face teste cu @WebMvcTest cu controller.
+}
