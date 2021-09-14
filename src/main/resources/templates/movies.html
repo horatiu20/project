@@ -37,16 +37,6 @@
     </ul>
     <input class="form-control ml-5 mr-5" id="myInput" placeholder="Search anything from database..." type="text">
 
-    <script>
-        $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-            $("#mainTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 </nav>
 
 <div class="container-fluid">
@@ -69,14 +59,9 @@
             <th data-toggle="tooltip" onclick="sortTable(2)" style="cursor: pointer" title="Click to sort">Release
                 year
             </th>
-            <th>Plot</th>
+            <th>Movie plot</th>
             <th data-toggle="tooltip" onclick="sortTable(3)" style="cursor: pointer" title="Click to sort">Rating</th>
             <th style="vertical-align: middle">Edit</th>
-            <script>
-                $(document).ready(function(){
-                $('[data-toggle="tooltip"]').tooltip();
-                });
-            </script>
         </tr>
         </thead>
         <tbody>

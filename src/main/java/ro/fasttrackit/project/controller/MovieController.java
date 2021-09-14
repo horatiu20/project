@@ -31,7 +31,7 @@ public class MovieController {
 				.orElseThrow(() -> new RuntimeException("Could not find movie with id " + movieId));
 	}
 
-	@PatchMapping()
+	@PatchMapping("{movieId}")
 	Movie patchMovie(@RequestBody Movie dbMovie, @RequestBody Movie movie) {
 		return movieService.patchMovie(dbMovie, movie);
 	}

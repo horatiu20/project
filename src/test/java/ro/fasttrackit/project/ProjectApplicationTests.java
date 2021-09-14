@@ -48,7 +48,7 @@ class ProjectApplicationTests {
 
 	@Test
 	@Transactional
-	@DisplayName("PUT a movie works")   //not working
+	@DisplayName("PUT a movie works")
 	void putMovie() {
 		service.postMovie(new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()));
 		service.putMovie(1, new Movie("movie2", 2021, "movie2 description", 9.6, List.of(), List.of()));
@@ -60,7 +60,7 @@ class ProjectApplicationTests {
 
 	@Test
 	@Transactional
-	@DisplayName("PATCH an old movie works")    //not working
+	@DisplayName("PATCH an old movie works")
 	void patchMovie() {
 		service.postMovie(new Movie("movie1", 2021, "first movie description", 9.6, List.of(), List.of()));
 
